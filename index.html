@@ -1,0 +1,59 @@
+screenWidth = 600;
+const screenHeight = 400;
+const defaultFPS = 10;
+var isRunning = true;
+var snake;
+var foods = [];
+
+var direction = {
+  up: 38,
+  down: 40,
+  left: 37,
+  right: 39
+};
+
+class Food {  
+  constructor(x, y, size) {
+    this.size = size;
+    this.x = x;
+    this.y = y;
+  }
+  
+  draw() {
+    circle(this.x, this.y, this.size);
+  }
+  
+  static instantiate() {
+    let size = 25;
+    let screenPosX = screenWidth / size;
+    let screenPosY = screenHeight / size;
+    let foodX = round(random(0, screenPosX - 1)) * size + (size / 2);
+    let foodY = round(random(0, screenPosY - 1)) * size + (size / 2);
+
+    let newFood = new Food(foodX, foodY, size);
+    return newFood;
+  }
+}
+
+class Body {
+  constructor(x, y, currentDirection) {
+    this.size = 25;
+    this.direction = currentDirection;
+    this.x = x;
+    this.y = y;
+  }
+}
+
+class Snake {
+  constructor() {
+    this.body = [];
+    let newBody = new Body(screenWidth / 2, screenHeight / 2, null);
+    this.body.push(newBody);
+  }
+  
+
+
+
+
+
+
